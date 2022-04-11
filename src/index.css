@@ -5,3 +5,43 @@ body {
   max-width: 38rem;
   padding: 2rem;
 }
+
+p {
+  margin: 0;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  max-width: 100%;
+}
+
+.keyboardConnected {
+  background-color: rgb(19, 189, 19);
+  border-radius: 1rem;
+  border-width: 2px;
+  border-color: green;
+  border-style: solid;
+  width: fit-content;
+  padding: 3px;
+}
+
+.keyboardDisconnected {
+  background-color: #ff0000;
+  border-radius: 1rem;
+  border-width: 2px;
+  border-color: rgb(136, 4, 4);
+  border-style: solid;
+  width: fit-content;
+  padding: 3px;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizantal {
+  display: flex;
+  width: 100%;
+}

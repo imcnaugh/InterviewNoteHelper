@@ -4,19 +4,41 @@ ipcRenderer.send('request-keyboard-channel')
 ipcRenderer.once('recive-keyboard-channel', (event) => {
     const [port] = event.ports;
     port.onmessage = (e) => {
-        const lastButtonSpan = document.getElementById('lastButtonPressed');
+        const isKeyboardConnected = document.getElementById('isKeyboardConnected');
         switch(e.data){
             case -1:
-                lastButtonSpan.innerText = "connected"
+                setKeyboardConnected(true)
                 break;
             case -2:
-                lastButtonSpan.innerText = "disconnected"
+                setKeyboardConnected(false)
                 break;
             default:
-                lastButtonSpan.innerText = e.data
+                log(e.data)
         }
     }
 })
 
+function setKeyboardConnected(isConnected){
+    const isKeyboardConnectedText = document.getElementById('isKeyboardConnectedText');
+    const isKeyboardConnectedIcon = document.getElementById('isKeyboardConnectedIcon');
+    if(isConnected){
+        isKeyboardConnectedText.innerText = "connected"
+        isKeyboardConnectedIcon.className = "keyboardConnected"
+    }
+    else{
+        isKeyboardConnectedText.innerText = "disconnected"
+        isKeyboardConnectedIcon.className = "keyboardDisconnected"
+    }
+}
+
+function log(value){
+    const textArea = document.getElementById('textarea');
+    const note = textArea.value
+    textArea.value = ''
+
+    console.log(value + ' ' + note)
+}
+
 contextBridge.exposeInMainWorld('electronAPI', {
+    logNote: (value) => log(value)
 })

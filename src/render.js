@@ -1,37 +1,20 @@
-// function idk(event){
-//     console.log("here")
-//     console.log(event)
-//     const [port] = event.ports
-//     port.onmessage = (e) => {
-//         switch(e){
-//             case -1:
-//                 console.log("connected")
-//                 break;
-//             case -2:
-//                 console.log("disconnected")
-//                 break;
-//             default:
-//                 console.log(e.data)
-//         }
-//     }
-// }
+const excelentButton = document.getElementById('excelentButton')
+excelentButton.addEventListener('click', () => window.electronAPI.logNote(6))
 
-// const portsSpan = document.getElementById('ports');
-// const getPortsButton = document.getElementById('getPortsButton');
-// getPortsButton.addEventListener('click', async () => {
-//     const ports = await window.electronAPI.getSerialPorts()
-//     portsSpan.innerText = JSON.stringify(ports);
-//     console.log(ports)
-// });
+const goodButton = document.getElementById('goodButton')
+goodButton.addEventListener('click', () => window.electronAPI.logNote(5))
 
-// const portPathInput = document.getElementById('portPathBox');
-// const connectToPortButton = document.getElementById('connectToPortBut');
-// connectToPortButton.addEventListener('click', async () => {
-//     const path = portPathInput.value;
-//     window.electronAPI.connect(path);
-// })
+const inaccurateButton = document.getElementById('inaccurateButton')
+inaccurateButton.addEventListener('click', () => window.electronAPI.logNote(4))
 
-const lastButtonSpan = document.getElementById('lastButtonPressed');
-// window.electronAPI.handleIncomingData((event, value) => {
-//     lastButtonSpan.innerText = value;
-// })
+const mistakeButton = document.getElementById('mistakeButton')
+mistakeButton.addEventListener('click', () => window.electronAPI.logNote(3))
+
+const questionButton = document.getElementById('questionButton')
+questionButton.addEventListener('click', () => window.electronAPI.logNote(2))
+
+const bludnerButton = document.getElementById('bludnerButton')
+bludnerButton.addEventListener('click', () => window.electronAPI.logNote(1))
+
+const commentButton = document.getElementById('commentButton')
+commentButton.addEventListener('click', () => window.electronAPI.logNote(0))

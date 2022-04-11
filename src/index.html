@@ -8,9 +8,21 @@
   <body>
     <h1>💖 Hello World!</h1>
     <p>Welcome to your Electron application.</p>
+    <div class="keyboardDisconnected" id="isKeyboardConnectedIcon">
+      Keyboard <span id="isKeyboardConnectedText">disconnected</span>
+    </div>
+    <div class="horizantal">
+      <textarea id="textarea" rows="8"></textarea>
+      <div class="vertical">
+        <button type="button" id="excelentButton">!!</button>
+        <button type="button" id="goodButton">!</button>
+        <button type="button" id="inaccurateButton">!?</button>
+        <button type="button" id="mistakeButton">?!</button>
+        <button type="button" id="questionButton">?</button>
+        <button type="button" id="bludnerButton">??</button>
+        <button type="button" id="commentButton">//</button>
+      </div>
+    </div>
   </body>
-  <p>
-    <span id="lastButtonPressed"></span>
-  </p>
   <script src="render.js"></script>
 </html>
