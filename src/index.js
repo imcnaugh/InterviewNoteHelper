@@ -59,7 +59,7 @@ app.on('activate', () => {
   }
 });
 
-async function saveNotes(event, data) {
+async function saveNotes(_, data) {
   const fileName = new Date().toLocaleDateString().replaceAll('/', '-')+'_'+data.name.replaceAll(' ','_')+'.md';
   let fileContents = `# ${data.name}\n${new Date().toLocaleDateString()}\n${data.position}\n${data.round}\n\n`
   data.notes.forEach(note => {
