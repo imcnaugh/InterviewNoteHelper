@@ -16,14 +16,51 @@ textarea {
   max-width: 100%;
 }
 
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+table {
+  border-spacing: 0px;
+  width: 100%;
+  text-align: left;
+}
+
+thead {
+  background-color: lightgray;
+}
+
+td:not(:last-child), th:not(:last-child) {
+  border-right-style: solid;
+  border-right-color: black;
+  border-right-width: 1px;
+  padding-left: 3px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
 .keyboardConnected {
   background-color: rgb(19, 189, 19);
   border-radius: 1rem;
   border-width: 2px;
   border-color: green;
   border-style: solid;
-  width: fit-content;
-  padding: 3px;
+  height: 15px;
+  width: 15px;
+  margin: 6px;
+  margin-right: 15px;
 }
 
 .keyboardDisconnected {
@@ -32,8 +69,10 @@ textarea {
   border-width: 2px;
   border-color: rgb(136, 4, 4);
   border-style: solid;
-  width: fit-content;
-  padding: 3px;
+  height: 15px;
+  width: 15px;
+  margin: 6px;
+  margin-right: 15px;
 }
 
 .vertical {
@@ -44,4 +83,53 @@ textarea {
 .horizantal {
   display: flex;
   width: 100%;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.metaDataInputArea {
+  min-width: 200px;
+  width: 25%;
+}
+
+.interviewMetaData{
+  margin-left: 20px;
+  margin-bottom: 7px;
+}
+
+.hide {
+  display: none;
+}
+
+.largeButton {
+  width: 200px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.timer {
+  text-align: right;
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+.marginTop {
+  margin-top: 5px;
+}
+
+.footer {
+  position:fixed;
+  display: flex;
+  flex-direction: row-reverse;
+  left:0px;
+  bottom:0px;
+  height:30px;
+  width:100%;
+}
+
+.scoreTimeTableHeader {
+  width: 10%;
+  min-width: 50px;
 }

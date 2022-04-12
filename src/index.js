@@ -1,4 +1,5 @@
-const { app, BrowserWindow, ipcMain, MessageChannelMain } = require('electron');
+const { app, BrowserWindow, ipcMain, MessageChannelMain, dialog } = require('electron');
+const fs = require('fs')
 const path = require('path');
 const KeyboardDto = require('./keyboardDto.js');
 
@@ -34,9 +35,9 @@ app.whenReady().then(() => {
   ipcMain.on('request-keyboard-channel', (event) => {
     const {port1, port2} = new MessageChannelMain();
     new KeyboardDto(port1);
-
     event.senderFrame.postMessage('recive-keyboard-channel', null, [port2] );
   });
+  ipcMain.on('save-notes', saveNotes);
 
   createWindow();
 })
@@ -57,3 +58,23 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+async function saveNotes(event, data) {
+  const fileName = new Date().toLocaleDateString().replaceAll('/', '-')+'_'+data.name.replaceAll(' ','_')+'.md';
+  let fileContents = `# ${data.name}\n${new Date().toLocaleDateString()}\n${data.position}\n${data.round}\n\n`
+  data.notes.forEach(note => {
+    fileContents += `${note.value}\t${note.time}\t${note.note}\n`
+  })
+
+  const file = await dialog.showSaveDialog({
+    title: 'Save Notes',
+    defaultPath: fileName
+  })
+  console.log(file)
+  if(file) {
+    fs.writeFile(file.filePath, fileContents, (err) => {
+      if (err) throw err;
+      console.log('The file has been saved!');
+    }
+  )}
+}
