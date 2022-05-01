@@ -3,7 +3,7 @@ const SerialPort = require('serialport')
 module.exports = class KeyboardDto {
   
   #vendorId = '2341'
-  #productId = '0042'  
+  #productId = '8037'  
   #port = null
   #intervalId = null
   #messagePort
