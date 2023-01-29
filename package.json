@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "md_table_prettyprint": "^1.0.3",
     "serialport": "^9.2.8"
   },
   "devDependencies": {
