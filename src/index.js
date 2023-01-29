@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, MessageChannelMain, dialog } = require('electron');
 const fs = require('fs')
 const path = require('path');
+const { prettyPrint } = require('md_table_prettyprint');
 const KeyboardDto = require('./keyboardDto.js');
 
 
@@ -62,9 +63,14 @@ app.on('activate', () => {
 async function saveNotes(_, data) {
   const fileName = new Date().toLocaleDateString().replaceAll('/', '-')+'_'+data.name.replaceAll(' ','_')+'.md';
   let fileContents = `# ${data.name}\n${new Date().toLocaleDateString()}\n${data.position}\n${data.round}\n\n`
-  data.notes.forEach(note => {
-    fileContents += `${note.value}\t${note.time}\t${note.note}\n`
-  })
+
+  let unformattedTable = data.notes.map(n => {
+    return `${n.value} | ${n.time} | ${n.note}`
+  }).join('\n');
+  let tableHeader = 'Key | Time | Note\n';
+
+  let formateedTable = prettyPrint(tableHeader + unformattedTable);
+  fileContents += formateedTable;
 
   const file = await dialog.showSaveDialog({
     title: 'Save Notes',
