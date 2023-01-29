@@ -62,15 +62,16 @@ app.on('activate', () => {
 
 async function saveNotes(_, data) {
   const fileName = new Date().toLocaleDateString().replaceAll('/', '-')+'_'+data.name.replaceAll(' ','_')+'.md';
-  let fileContents = `# ${data.name}\n${new Date().toLocaleDateString()}\n${data.position}\n${data.round}\n\n`
+  let header = `# ${data.name}\n${new Date().toLocaleDateString()}\n${data.position}\n${data.round}\n\n`;
+  let fileContents = header
 
-  let unformattedTable = data.notes.map(n => {
+  let tableRows = data.notes.map(n => {
     return `${n.value} | ${n.time} | ${n.note}`
   }).join('\n');
   let tableHeader = 'Key | Time | Note\n';
 
-  let formateedTable = prettyPrint(tableHeader + unformattedTable);
-  fileContents += formateedTable;
+  let prettyTable = prettyPrint(tableHeader + tableRows);
+  fileContents += prettyTable;
 
   const file = await dialog.showSaveDialog({
     title: 'Save Notes',
