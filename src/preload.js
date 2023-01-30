@@ -1,7 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 ipcRenderer.send('request-keyboard-channel')
-ipcRenderer.once('recive-keyboard-channel', (event) => {
+ipcRenderer.once('receive-keyboard-channel', (event) => {
     const [port] = event.ports;
     port.onmessage = (e) => {
         switch(e.data){
@@ -32,12 +32,22 @@ function log(value){
 
     textArea.value = ''
 
+    const dict = {
+        0: '//',
+        1: '??',
+        2: '?',
+        3: '?!',
+        4: '!?',
+        5: '!',
+        6: '!!',
+    }
+
     // add a new row to the table
     const row = document.createElement('tr')
     const valueCell = document.createElement('td')
     const timeCell = document.createElement('td')
     const noteCell = document.createElement('td')
-    valueCell.innerText = value
+    valueCell.innerText = dict[value]
     timeCell.innerText = time
     noteCell.innerText = note
     row.appendChild(valueCell)  
@@ -45,7 +55,7 @@ function log(value){
     row.appendChild(noteCell) 
     logTable.appendChild(row)
 
-    ipcRenderer.send('save-notes', {value, time, note})
+    ipcRenderer.send('save-notes', { value: dict[value], time, note})
 }
 contextBridge.exposeInMainWorld('electronAPI', {
     logNote: (value) => log(value),

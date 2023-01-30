@@ -27,7 +27,7 @@ app.whenReady().then(() => {
   ipcMain.on('request-keyboard-channel', (event) => {
     const {port1, port2} = new MessageChannelMain();
     new KeyboardDto(port1);
-    event.senderFrame.postMessage('recive-keyboard-channel', null, [port2] );
+    event.senderFrame.postMessage('receive-keyboard-channel', null, [port2] );
   });
   ipcMain.on('save-notes', addThought);
   ipcMain.on('start-interview', startInterview);

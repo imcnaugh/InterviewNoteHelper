@@ -23,13 +23,13 @@ const timerDisplay = document.getElementById('timerDisplay')
 
 let timerIntervalId = null
 
-excelentButton.addEventListener('click', () => window.electronAPI.logNote('!!'))
-goodButton.addEventListener('click', () => window.electronAPI.logNote('!'))
-inaccurateButton.addEventListener('click', () => window.electronAPI.logNote('!?'))
-mistakeButton.addEventListener('click', () => window.electronAPI.logNote('?!'))
-questionButton.addEventListener('click', () => window.electronAPI.logNote('?'))
-bludnerButton.addEventListener('click', () => window.electronAPI.logNote('??'))
-commentButton.addEventListener('click', () => window.electronAPI.logNote('//'))
+excelentButton.addEventListener('click', () => window.electronAPI.logNote(6))
+goodButton.addEventListener('click', () => window.electronAPI.logNote(5))
+inaccurateButton.addEventListener('click', () => window.electronAPI.logNote(4))
+mistakeButton.addEventListener('click', () => window.electronAPI.logNote(3))
+questionButton.addEventListener('click', () => window.electronAPI.logNote(2))
+bludnerButton.addEventListener('click', () => window.electronAPI.logNote(1))
+commentButton.addEventListener('click', () => window.electronAPI.logNote(0))
 
 nameBox.addEventListener('input', readyToStartInterview)
 positionBox.addEventListener('input', readyToStartInterview)
