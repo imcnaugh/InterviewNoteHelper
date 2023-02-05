@@ -80,7 +80,7 @@ tbody tr:nth-child(odd) {
   flex-direction: column;
 }
 
-.horizantal {
+.horizontal {
   display: flex;
   width: 100%;
 }

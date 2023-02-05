@@ -1,8 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
-const notes = []
 
 ipcRenderer.send('request-keyboard-channel')
-ipcRenderer.once('recive-keyboard-channel', (event) => {
+ipcRenderer.once('receive-keyboard-channel', (event) => {
     const [port] = event.ports;
     port.onmessage = (e) => {
         switch(e.data){
@@ -24,7 +23,7 @@ function setKeyboardConnected(isConnected){
 }
 
 function log(value){
-    const textArea = document.getElementById('textarea');
+    const textArea = document.getElementById('textarea')
     const timerDisplay = document.getElementById('timerDisplay')
     const logTable = document.getElementById('interviewTable')
 
@@ -33,7 +32,6 @@ function log(value){
 
     textArea.value = ''
 
-    // create a dictionary of the data
     const dict = {
         0: '//',
         1: '??',
@@ -57,25 +55,14 @@ function log(value){
     row.appendChild(noteCell) 
     logTable.appendChild(row)
 
-    // append data to the notes array
-    notes.push({
-        value: dict[value],
-        time: time,
-        note: note
-    })
+    ipcRenderer.send('save-notes', { value: dict[value], time, note})
 }
-
-function saveNotes(name, position, round){
-    const data = {
-        name: name,
-        position: position,
-        round: round,
-        notes: notes
-    }
-    ipcRenderer.send('save-notes', data)
-}
-
 contextBridge.exposeInMainWorld('electronAPI', {
     logNote: (value) => log(value),
-    stopInterview: (name, position, round) => saveNotes(name, position, round),
+    startInterview: (name, position, round) => ipcRenderer.send('start-interview', {
+        name: name,
+        position: position,
+        round: round
+    }),
+    stopInterview: () => ipcRenderer.send('stop-interview'),
 })
