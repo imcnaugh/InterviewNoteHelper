@@ -1,8 +1,6 @@
 const { app, BrowserWindow, ipcMain, MessageChannelMain, dialog } = require('electron');
 const path = require('path');
-const { prettyPrint } = require('md_table_prettyprint');
 const KeyboardDto = require('./dto/keyboardDto.js');
-const FileDto = require('./dto/fileDto.js');
 const { startInterview, stopInterview, addThought } = require('./service/interviewService.js');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.

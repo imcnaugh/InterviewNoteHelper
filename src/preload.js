@@ -23,7 +23,7 @@ function setKeyboardConnected(isConnected){
 }
 
 function log(value){
-    const textArea = document.getElementById('textarea');
+    const textArea = document.getElementById('textarea')
     const timerDisplay = document.getElementById('timerDisplay')
     const logTable = document.getElementById('interviewTable')
 

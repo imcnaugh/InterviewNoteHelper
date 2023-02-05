@@ -1,9 +1,9 @@
-const excelentButton = document.getElementById('excelentButton')
+const excellentButton = document.getElementById('excellentButton')
 const goodButton = document.getElementById('goodButton')
 const inaccurateButton = document.getElementById('inaccurateButton')
 const mistakeButton = document.getElementById('mistakeButton')
 const questionButton = document.getElementById('questionButton')
-const bludnerButton = document.getElementById('bludnerButton')
+const blunderButton = document.getElementById('blunderButton')
 const commentButton = document.getElementById('commentButton')
 
 const nameBox = document.getElementById('candidateName')
@@ -23,12 +23,12 @@ const timerDisplay = document.getElementById('timerDisplay')
 
 let timerIntervalId = null
 
-excelentButton.addEventListener('click', () => window.electronAPI.logNote(6))
+excellentButton.addEventListener('click', () => window.electronAPI.logNote(6))
 goodButton.addEventListener('click', () => window.electronAPI.logNote(5))
 inaccurateButton.addEventListener('click', () => window.electronAPI.logNote(4))
 mistakeButton.addEventListener('click', () => window.electronAPI.logNote(3))
 questionButton.addEventListener('click', () => window.electronAPI.logNote(2))
-bludnerButton.addEventListener('click', () => window.electronAPI.logNote(1))
+blunderButton.addEventListener('click', () => window.electronAPI.logNote(1))
 commentButton.addEventListener('click', () => window.electronAPI.logNote(0))
 
 nameBox.addEventListener('input', readyToStartInterview)
