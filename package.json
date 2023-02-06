@@ -17,6 +17,6 @@
     "serialport": "10.5.0"
   },
   "devDependencies": {
-    "electron": "18.3.7"
+    "electron": "22.2.0"
   }
 }
