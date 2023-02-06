@@ -1,13 +1,7 @@
-const { app, BrowserWindow, ipcMain, MessageChannelMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, MessageChannelMain } = require('electron');
 const path = require('path');
 const KeyboardDto = require('./dto/keyboardDto.js');
 const { startInterview, stopInterview, addThought } = require('./service/interviewService.js');
-
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) {
-  // eslint-disable-line global-require
-  app.quit();
-}
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({

@@ -1,9 +1,9 @@
-const SerialPort = require('serialport')
+const { SerialPort } = require('serialport')
 
 module.exports = class KeyboardDto {
-  
+
   #vendorId = '2341'
-  #productId = '8037'  
+  #productId = '8037'
   #port = null
   #intervalId = null
   #messagePort
@@ -29,10 +29,8 @@ module.exports = class KeyboardDto {
       console.log('cant find the correct port')
       return
     }
-    
-    this.#port = new SerialPort(portPath.path, {
-      baudRate: 9600
-      }, (err) => {
+
+    this.#port = new SerialPort({path: portPath.path, baudRate: 9600 }, (err) => {
         if (err) {
           console.log('error message ' + err)
         } else{
