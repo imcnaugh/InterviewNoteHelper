@@ -3,6 +3,8 @@ const path = require('path');
 const KeyboardDto = require('./dto/keyboardDto.js');
 const { startInterview, stopInterview, addThought } = require('./service/interviewService.js');
 
+if (require('electron-squirrel-startup')) app.quit();
+
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
