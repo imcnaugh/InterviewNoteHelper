@@ -1,5 +1,4 @@
 const { app, BrowserWindow, ipcMain, MessageChannelMain } = require('electron');
-const path = require('path');
 const KeyboardDto = require('./dto/keyboardDto.js');
 const { startInterview, stopInterview, addThought } = require('./service/interviewService.js');
 
@@ -10,11 +9,11 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
   });
 
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 };
 
 app.whenReady().then(() => {
