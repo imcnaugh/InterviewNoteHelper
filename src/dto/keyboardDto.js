@@ -30,7 +30,7 @@ module.exports = class KeyboardDto {
       return
     }
 
-    this.#port = new SerialPort({path: portPath.path, baudRate: 9600 }, (err) => {
+    this.#port = new SerialPort(portPath.path, { baudRate: 9600 }, (err) => {
         if (err) {
           console.log('error message ' + err)
         } else{
