@@ -18,7 +18,8 @@
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "md_table_prettyprint": "^1.0.3",
-    "serialport": "^9.2.8"
+    "serialport": "^9.2.8",
+    "vue": "^3.2.47"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.63",

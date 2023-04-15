@@ -1,3 +1,8 @@
+import { createApp } from 'vue'
+import TestComp from "./vueComponents/testComp.vue"
+
+createApp(TestComp).mount('#app')
+
 const excellentButton = document.getElementById('excellentButton')
 const goodButton = document.getElementById('goodButton')
 const inaccurateButton = document.getElementById('inaccurateButton')
