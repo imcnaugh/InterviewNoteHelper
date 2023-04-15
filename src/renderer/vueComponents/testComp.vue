@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Test Component</h1>
+    <h1 class="idk">Test Component</h1>
     <p>Test Component</p>
   </div>
 </template>
@@ -12,4 +12,7 @@ export default {
 </script>
 
 <style>
+h1 {
+  color: red;
+}
 </style>
