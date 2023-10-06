@@ -29,6 +29,6 @@
     "@electron-forge/plugin-webpack": "^6.0.5",
     "@vercel/webpack-asset-relocator-loader": "^1.7.3",
     "copy-webpack-plugin": "^11.0.0",
-    "electron": "23.0.0"
+    "electron": "23.3.13"
   }
 }
